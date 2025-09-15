@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@keyframes float1 {
+  0% { transform: translateY(0) translateX(0) scale(1); opacity: 0.9; }
+  50% { transform: translateY(-14px) translateX(6px) scale(1.02); opacity: 1; }
+  100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.9; }
+}
+@keyframes float2 {
+  0% { transform: translateY(0) translateX(0) scale(1); opacity: 0.85; }
+  50% { transform: translateY(-18px) translateX(-6px) scale(1.03); opacity: 1; }
+  100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.85; }
+}
+.animate-float1 { animation: float1 6s ease-in-out infinite; }
+.animate-float2 { animation: float2 7s ease-in-out infinite; }
+
+/* small fade-in reveal for content when section becomes visible */
+.reveal { opacity: 0; transform: translateY(8px); transition: opacity 600ms ease, transform 600ms ease; }
+.section-visible .reveal { opacity: 1; transform: translateY(0); }
+
+/* rotating/slide-in title animation (keyed by react key to replay) */
+@keyframes titleIn {
+  0% { transform: translateY(18px); opacity: 0; }
+  15% { transform: translateY(0); opacity: 1; }
+  85% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-18px); opacity: 0; }
+}
+.animate-title { display:inline-block; animation: titleIn 2.4s ease-in-out forwards; }
+
+/* subtle pop for buttons/cards */
+@keyframes pop {
+  0% { transform: scale(0.98); opacity: 0; }
+  60% { transform: scale(1.02); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.pop { animation: pop 550ms ease; }
+
+/* small floating subtle pulse (for CTA) */
+@keyframes pulse-soft {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.02); opacity: 0.95; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.animate-cta-pulse { animation: pulse-soft 3.2s ease-in-out infinite; }
+
+/* utility to keep forms consistent on dark bg */
+input::placeholder, textarea::placeholder { opacity: 0.85; color: rgba(255,255,255,0.7); }
+
+/* small adaptive tweaks */
+@media (max-width: 768px) {
+  .animate-title { font-size: 1rem; }
+}
+
+/* small helper to ensure root is full height (for smooth scrollIntoView behavior) */
+html, body, #root { height: 100%; }
